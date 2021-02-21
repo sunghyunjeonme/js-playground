@@ -15,6 +15,7 @@ function handleSubmit(event) {
   paintGreeting(currentValue);
   saveName(currentValue);
 }
+// value를 갖고 paintGreeting 함수를 다시 불러서
 
 function askForName() {
   form.classList.add(SHOWING_CN);
@@ -26,10 +27,14 @@ function paintGreeting(text) {
   greeting.classList.add(SHOWING_CN);
   greeting.innerText = `Hello ${text}`;
 }
+// paintGreeting 함수는 form을 지우고
+// greeting을 보여주고
+// 내가 보낸 text를 넣어준다.
 
 function loadName() {
   const currentUser = localStorage.getItem(USER_LS);
   if (currentUser === null) {
+    // currentUser가 없으면 user의 이름을 요청한다.
     askForName();
   } else {
     // 유저가 있는 경우
