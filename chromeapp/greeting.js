@@ -13,13 +13,18 @@ function handleSubmit(event) {
   event.preventDefault(); // event가 일어나지 못 하게 막음.
   const currentValue = input.value;
   paintGreeting(currentValue);
+  // paintGreeting 함수를 호출하고 인자로 currentValue를 넣어주었다.
   saveName(currentValue);
+  // saveName 함수를 호출하고 인자로 currentValue를 넣어주었다.
 }
-// value를 갖고 paintGreeting 함수를 다시 불러서
+
+// handleSubmit 함수는 submit이 일어났을 때
+// paintGreeting과 saveName을 한다.
 
 function askForName() {
   form.classList.add(SHOWING_CN);
-  form.addEventListener("submit", handleSubmit); // 무엇인가를 form에 submit하면 handler를 호출한다.
+  form.addEventListener("submit", handleSubmit);
+  // 무엇인가를 form에 submit하면 handler를 호출한다.
 }
 
 function paintGreeting(text) {
