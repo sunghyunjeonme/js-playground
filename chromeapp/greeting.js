@@ -1,6 +1,6 @@
-const form = document.querySelector(".js-form");
-const input = form.querySelector("input");
-const greeting = document.querySelector(".js-greetings");
+const form = document.querySelector(".js-form"),
+  input = form.querySelector("input"),
+  greeting = document.querySelector(".js-greetings");
 
 const USER_LS = "currentUser";
 const SHOWING_CN = "showing";
@@ -10,21 +10,21 @@ function saveName(text) {
 }
 
 function handleSubmit(event) {
-  event.preventDefault(); // event가 일어나지 못 하게 막음.
+  event.preventDefault();
   const currentValue = input.value;
   paintGreeting(currentValue);
-  // paintGreeting 함수를 호출하고 인자로 currentValue를 넣어주었다.
   saveName(currentValue);
-  // saveName 함수를 호출하고 인자로 currentValue를 넣어주었다.
 }
 
-// handleSubmit 함수는 submit이 일어났을 때
-// paintGreeting과 saveName을 한다.
+// 이벤트 버블
+// form에서 발생된 이벤트는 거품처럼 document까지 올라간다.
+// preventDefault 메서드는 해당 동작을 멈춰준다.
+// const currentValue = input.value;
+// console.log(currentValue); 결과는 항상 변수에 담아서 확인한다.
 
 function askForName() {
   form.classList.add(SHOWING_CN);
   form.addEventListener("submit", handleSubmit);
-  // 무엇인가를 form에 submit하면 handler를 호출한다.
 }
 
 function paintGreeting(text) {
@@ -32,17 +32,12 @@ function paintGreeting(text) {
   greeting.classList.add(SHOWING_CN);
   greeting.innerText = `Hello ${text}`;
 }
-// paintGreeting 함수는 form을 지우고
-// greeting을 보여주고
-// 내가 보낸 text를 넣어준다.
 
 function loadName() {
   const currentUser = localStorage.getItem(USER_LS);
   if (currentUser === null) {
-    // currentUser가 없으면 user의 이름을 요청한다.
     askForName();
   } else {
-    // 유저가 있는 경우
     paintGreeting(currentUser);
   }
 }
@@ -50,5 +45,4 @@ function loadName() {
 function init() {
   loadName();
 }
-
 init();
