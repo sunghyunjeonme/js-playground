@@ -1,4 +1,5 @@
 // fetch API를 이용해서 data 불러오기
+
 function loadItems() {
   return fetch("data/data.json")
     .then((response) => response.json())
