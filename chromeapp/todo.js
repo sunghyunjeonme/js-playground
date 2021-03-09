@@ -4,7 +4,6 @@ const toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = "toDos";
 let toDos = [];
-console.log(toDos, "toDos 배열 상태");
 
 function handleDeleteToDo(event) {
   const btn = event.target;
